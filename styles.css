@@ -1,0 +1,87 @@
+.col-md-4 img{
+    width: 100px;
+    height: 100px;
+}
+
+#header-links{
+  background-color: #333;
+  overflow: hidden;
+  padding-left: 1000px;
+}
+body{
+  background-color: #fff0f5;
+  overflow: hidden;
+}
+form{
+  padding-top: 200px;
+}
+.btn-submit{
+  padding-left: 50%;
+}
+.brand-img{
+  width: 79px;
+  height: 49px;
+  border: black solid;
+}
+#header-links a{
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.events-card div{
+  width: 70rem;
+}
+.events-card{
+  padding-top: 167px
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #23384e;
+  color: white;
+  text-align: center;
+}
+.social-icons{
+  width: 30px;
+  height: 30px;
+}
+.padding-icon{
+  padding-left: 1200px !important;
+}
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: #23384e;
+  color: white;
+  text-align: center;
+}
+.navbar-bg{
+  background-color: #23384e;
+}
+article{
+  padding-top: 177px;
+}
+.Event-detail-heading{
+  font-weight: 500;
+}
+.event-details-btn a{
+  color: #fff;
+}
+.event-details-btn{
+  padding-left: 25%;
+}
+.nav-item{
+  color: #fff !important;
+  font-weight: 600;
+}
+.evntDetl{
+  padding-left: 10% !important;
+}
