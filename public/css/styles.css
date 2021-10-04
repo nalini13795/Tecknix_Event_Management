@@ -2,7 +2,10 @@
     width: 100px;
     height: 100px;
 }
-
+.contentError{
+  padding-top: 213px;
+  padding-left: 22px;
+}
 #header-links{
   background-color: #333;
   overflow: hidden;

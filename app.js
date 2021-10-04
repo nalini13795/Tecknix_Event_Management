@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 var methodOverride = require('method-override')
-
+const connectionRoute = require('./routes/connectionRoute')
 const app = express();  
 let host = 'localhost';
 let port = 3000;
@@ -19,6 +19,8 @@ app.use(methodOverride('_method'))
 app.get('/',(req,res)=>{
     res.render('index');
 })
+
+app.use('/connections',connectionRoute);
 
 app.use((req,res,next)=>{
     let err = new Error('Server cannot locate '+req.url);
