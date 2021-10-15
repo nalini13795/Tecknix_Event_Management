@@ -1,28 +1,26 @@
 <%- include('../partials/header.ejs')%>
     <div class="container">
-        <div class="row">
+        <div class="row card-top">
+            <% if(connections.length){%>
+                <% topics.forEach(topic=>{ %>
             <div class="events-card">
                 <div class="card bg-light mb-3">
-                    <div class="card-header">HR EVENTS</div>
+                    <div class="card-header"><%= topic %></div>
                     <div class="card-body">
                         <ul>
-                            <li><a  href="/connections/showConnection">Freashers Party</a></li>
-                            <li><a  href="/connections/showConnection">Holi Party</a></li>
-                            <li><a  href="/connections/showConnection">Culture Mixing Event</a></li>
+                            <% connections.forEach(connection=>{ %>
+                                <% if(connection.topic == topic){%>
+                                    <li><a  href="/connections/<%= connection.id%>"><%= connection.title %></a></li>
+                                <%}%>
+                            <%});%>
                         </ul>
                     </div>
                 </div>
-                <div class="card bg-light mb-3">
-                    <div class="card-header">KNOWLEDGE EVENT</div>
-                    <div class="card-body">
-                        <ul>
-                        <li><a  href="/connections/showConnection">Learn Python</a></li>
-                        <li><a  href="/connections/showConnection">Spring Tutorial</a></li>
-                        <li><a  href="/connections/showConnection">Angular Workshop</a></li>
-                    </ul>
-                    </div>
-                </div>
             </div>
+            <% });
+            }else{%>
+            <p>There are no Events to display.</p>
+        <%}%>
         </div>
     </div>  
     <%- include('../partials/footer.ejs')%>

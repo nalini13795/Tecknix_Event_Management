@@ -1,24 +1,26 @@
 <%- include('../partials/header.ejs')%>
 
     <div class="container">
-        <div class="events-card">
+        <div class="events-card card-id">
             <div class="card bg-light mb-3">
-                <div class="card-header Event-detail-heading">Learn Python</div>
+                <div class="card-header Event-detail-heading"><%connection.title%></div>
                 <div class="card-body row">
-                    <div class="col-3"><img src="/images/python.jfif" alt=""></div>
+                    <div class="col-3"><img class="card-img" src="<%= connection.imageURL%>" alt=""></div>
                     <div class="col-7 evntDetl">
-                        <h2>Hosted By Jordan</h2>
-                        <p>Wednusday, 22nd September 2021</p>
-                        <p>11:30 AM - 5:30 PM EST</p>
-                        <p>Virtual Event will be hosted on ZOOM</p>
+                        <h2>Hosted By <%= connection.host%></h2>
+                        <p><%= connection.when%></p>
+                        <p><%= connection.startTime%> - <%= connection.endTime%></p>
+                        <p><%= connection.where%></p>
                         <h3>Details</h3>
-                        <p>This is a basic level workshop where all the basics of python will be covered, no pre-requisite are required for this workshop. At the end of the workshop a small project will be given for practice. </p>
+                        <p><%= connection.details%></p>
                     </div>
                     <div class="col-2">
-                        <div class="event-details-btn">
-                            <a class="btn btn-secondary" href="connections.html">Update</a>
-                            <a class="btn btn-danger" href="connections.html">Delete</a>
-                    </div>
+                        <form>
+                            <div class="event-details-btn">
+                                <button class="btn btn-secondary" type = "submit" formmethod ="GET"  formaction ="/connections/<%= connection.id%>/edit">Edit</button>
+                                <button class="btn btn-danger" type ="submit" formmethod ="POST"  formaction ="/connections/<%= connection.id%>?_method=DELETE">Delete</button>
+                            </div>                        
+                        </form>
                     </div>
                 </div>
             </div>

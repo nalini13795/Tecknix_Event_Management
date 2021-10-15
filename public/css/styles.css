@@ -11,12 +11,22 @@
   overflow: hidden;
   padding-left: 1000px;
 }
+.card-top{
+  padding-top: 150px;
+}
 body{
   background-color: #fff0f5;
   overflow: hidden;
 }
-form{
+.card-img{
+  height: 300px;
+  width: 300px;
+}
+.newConnection-form{
   padding-top: 200px;
+}
+.card-id{
+  padding-top: 168px;
 }
 .btn-submit{
   padding-left: 50%;
@@ -36,9 +46,6 @@ form{
 }
 .events-card div{
   width: 70rem;
-}
-.events-card{
-  padding-top: 167px
 }
 
 footer {
