@@ -8,9 +8,26 @@
                     <div class="col-3"><img class="card-img" src="<%= connection.imageURL%>" alt=""></div>
                     <div class="col-7 evntDetl">
                         <h2>Hosted By <%= connection.host%></h2>
-                        <p><%= connection.when%></p>
-                        <p><%= connection.startTime%> - <%= connection.endTime%></p>
-                        <p><%= connection.where%></p>
+                        <div class="event-info">
+                            <div class=" row">
+                                <h6>Hosted On : </h6>
+                                <div class="col-sm-10">
+                                    <p><%= connection.when%></p>
+                                </div>
+                            </div>
+                            <div class=" row">
+                                <h6>Timmings : </h6>
+                                <div class="col-sm-10">
+                                    <p><%= connection.startTime%> - <%= connection.endTime%></p>
+                                </div>
+                            </div>
+                            <div class=" row">
+                                <h6>location : </h6>
+                                <div class="col-sm-10">
+                                    <p><%= connection.where%></p>
+                                </div>
+                            </div>
+                        </div>
                         <h3>Details</h3>
                         <p><%= connection.details%></p>
                     </div>

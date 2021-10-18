@@ -28,6 +28,18 @@ const connections = [
     },
     {
         id : '3',
+        topic : 'KNOWLEDGE EVENT',
+        title :'Learn ReactJS',
+        host : 'Timber',
+        details : 'This is a basic level workshop where all the basics of python will be covered, no pre-requisite are required for this workshop. At the end of the workshop a small project will be given for practice.',
+        where : 'Zoom',
+        when :'2021-11-15',
+        startTime : DateTime.local(2021,2,12,9,0).toLocaleString(DateTime.TIME_24_SIMPLE),
+        endTime : DateTime.local(2021,2,12,15,0).toLocaleString(DateTime.TIME_24_SIMPLE),
+        imageURL : 'http://localhost:3000/images/reactjs.jpg'
+    },
+    {
+        id : '4',
         topic : 'HR EVENT',
         title :'Dandiya Event',
         host : 'Nalini',
@@ -37,6 +49,30 @@ const connections = [
         startTime : DateTime.local(2021,2,12,9,0).toLocaleString(DateTime.TIME_24_SIMPLE),
         endTime : DateTime.local(2021,2,12,15,0).toLocaleString(DateTime.TIME_24_SIMPLE),
         imageURL : 'https://i.pinimg.com/736x/0f/76/d0/0f76d0bffd7c7623eaa0ee6d9d40c583.jpg'
+    },
+    {
+        id : '5',
+        topic : 'HR EVENT',
+        title :'Diwali Event',
+        host : 'Ria',
+        details : 'This event is to celebrate the gujrati festival of Diyas. There will snacks and dandiya available at the location please come enjoy a fun night with us.',
+        where : 'Common room 2',
+        when : '2021-12-26',
+        startTime : DateTime.local(2021,2,12,9,0).toLocaleString(DateTime.TIME_24_SIMPLE),
+        endTime : DateTime.local(2021,2,12,15,0).toLocaleString(DateTime.TIME_24_SIMPLE),
+        imageURL : 'http://localhost:3000/images/diwali.jfif'
+    },
+    {
+        id : '6',
+        topic : 'HR EVENT',
+        title :'Holi Event',
+        host : 'Gaurav',
+        details : 'This event is to celebrate the gujrati festival of Holi. There will snacks and dandiya available at the location please come enjoy a fun night with us.',
+        where : 'Common room 2',
+        when : '2021-12-26',
+        startTime : DateTime.local(2021,2,12,9,0).toLocaleString(DateTime.TIME_24_SIMPLE),
+        endTime : DateTime.local(2021,2,12,15,0).toLocaleString(DateTime.TIME_24_SIMPLE),
+        imageURL : 'http://localhost:3000/images/holi.jfif'
     }
 ];
 

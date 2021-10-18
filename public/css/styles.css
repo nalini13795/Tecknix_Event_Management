@@ -18,6 +18,11 @@ body{
   background-color: #fff0f5;
   overflow: hidden;
 }
+.event-info{
+  padding-left: 22px;
+  padding-top: 28px;
+  padding-bottom: 14px;
+}
 .card-img{
   height: 300px;
   width: 300px;

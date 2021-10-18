@@ -69,11 +69,3 @@ exports.update = (req,res) =>{
         next(err);
     }
 }
-
-exports.about = (req,res) => {
-    res.render('about');
-}
-
-exports.contact = (req,res) => {
-    res.render('contact');
-}

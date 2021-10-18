@@ -1,5 +1,5 @@
 const express = require('express');
-const controller = require('../controllers/ConnectionController')
+const controller = require('../controllers/connectionController')
 const router = express.Router();
 
 
@@ -7,12 +7,6 @@ const router = express.Router();
 router.get('/', controller.Connections);
 
 router.get('/newConnection',controller.newConnection);
-
-router.get('/showConnection',controller.Connection);
-
-router.get('/about',controller.about);
-
-router.get('/contact', controller.contact);
 
 router.get('/:id',controller.showByID);
 
