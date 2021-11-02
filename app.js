@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 var methodOverride = require('method-override')
+const mongoose = require('mongoose');
 const connectionRoute = require('./routes/connectionRoute')
 const mainRoute = require('./routes/mainRoute')
 const app = express();  
@@ -8,6 +9,14 @@ let host = 'localhost';
 let port = 3000;
 
 app.set('view engine','ejs');
+
+mongoose.connect('mongodb://localhost:27017/tecknix', { useUnifiedTopology: true, useNewUrlParser: true })
+.then(()=>{
+    app.listen(port, host, ()=>{
+        console.log('Server is running on port', port);
+    })
+})
+.catch(err=>console.log(err.message));
 
 
 app.use(express.static('public'));
@@ -39,6 +48,3 @@ app.use((err,req,res,next) => {
     res.render('error',{error : err});
 });
 
-app.listen(port, host, ()=>{
-    console.log('App running on the port ',port);
-})
