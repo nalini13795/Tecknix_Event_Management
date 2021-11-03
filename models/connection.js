@@ -12,9 +12,9 @@ const connectionSchema = new Schema({
         minLength: [10, 'Minimum charecter should be 10']
     },
     where : {type: String, required:[true, 'Location is required']},
-    when : {type: Date, required:[true, 'Date is required']},
+    // when : {type: Date, required:[true, 'Date is required']},
     startTime : {type: Date, required:[true, 'startTime is required']},
-    startTime : {type: Date, required:[true, 'startTime is required']},
+    endTime : {type: Date, required:[true, 'endTime is required']},
     imageURL : {type: String}
 }, {timestamps: true}
 )
