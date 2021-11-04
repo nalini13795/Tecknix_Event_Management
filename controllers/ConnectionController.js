@@ -1,5 +1,6 @@
 const express = require('express');
 const model = require('../models/connection');
+// const moment = require('moment');
 
 const router = express.Router();
 
@@ -36,8 +37,11 @@ exports.showByID = (req, res, next) => {
     model.findById(id)
     .then(connection=>{
         if(connection){
-            console.log(connection.startTime)
-            console.log(connection.endTime)
+            connection =JSON.parse(JSON.stringify(connection)) 
+            console.log(connection)
+            connection.when = JSON.stringify(connection.startTime).slice(1,11)
+            connection.startTime = JSON.stringify(connection.startTime).slice(12,17);
+            connection.endTime = JSON.stringify(connection.endTime).slice(12,17);
             res.render('./connections/connection',{connection})
         }else{
             let err = new Error('Cannot Find connection with id '+id);
@@ -49,11 +53,13 @@ exports.showByID = (req, res, next) => {
 }
 
 exports.addConnection = (req, res, next) =>{
-
+    console.log(req.body);
+    req.body.startTime = req.body.startTime+'Z';
+    req.body.endTime = req.body.endTime+'Z';
     let connection = new model(req.body);
     connection.save(connection)
     .then(()=>res.redirect('/connections'))
-    .catchx(err=>{
+    .catch(err=>{
         if(err.name === 'ValidationError'){
             err.status =  400;    
         }
@@ -68,7 +74,7 @@ exports.delete = (req, res, next) =>{
         err.status = 400;
         next(err);
     }
-    model.findOneAndDelete(id, {useFindAndModify: false})
+    model.findByIdAndRemove(id, {useFindAndModify: false})
     .then(connection=>{
         if(connection){
             res.redirect('/connections')
@@ -91,6 +97,9 @@ exports.edit = (req, res, next) => {
     model.findById(id)
     .then(connection=>{
         if(connection){
+            connection =JSON.parse(JSON.stringify(connection)) 
+            connection.startTime = JSON.stringify(connection.startTime).slice(1,20);
+            connection.endTime = JSON.stringify(connection.endTime).slice(1,20);
             res.render('./connections/edit', {connection});
         }else{
             let err = new Error('Cannot find a connection with id ' + id);
@@ -103,6 +112,8 @@ exports.edit = (req, res, next) => {
 
 exports.update = (req, res, next) =>{
     let connection = req.body;
+    connection.startTime = connection.startTime+'Z'
+    connection.endTime = connection.endTime+'Z'
     let id = req.params.id;
     if(!id.match(/^[0-9a-f]{24}$/)){
         let err = new Error('Invalid connection id');
@@ -112,6 +123,7 @@ exports.update = (req, res, next) =>{
     model.findByIdAndUpdate(id,connection, {useFindAndModify: false, runValidators: true})
     .then(connection=>{
         if(connection){
+
             res.redirect('/connections/'+id)
         }else{
             let err = new Error('Cannot find a connection with id ' + id);
