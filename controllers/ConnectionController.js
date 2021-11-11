@@ -1,7 +1,6 @@
 const express = require('express');
 const model = require('../models/connection');
-// const moment = require('moment');
-
+const {DateTime} = require('luxon');
 const router = express.Router();
 
 
@@ -38,7 +37,6 @@ exports.showByID = (req, res, next) => {
     .then(connection=>{
         if(connection){
             connection =JSON.parse(JSON.stringify(connection)) 
-            console.log(connection)
             connection.when = JSON.stringify(connection.startTime).slice(1,11)
             connection.startTime = JSON.stringify(connection.startTime).slice(12,17);
             connection.endTime = JSON.stringify(connection.endTime).slice(12,17);
@@ -54,9 +52,17 @@ exports.showByID = (req, res, next) => {
 
 exports.addConnection = (req, res, next) =>{
     console.log(req.body);
-    req.body.startTime = req.body.startTime+'Z';
-    req.body.endTime = req.body.endTime+'Z';
+    if(req.body.startTime && req.body.endTime){
+        req.body.startTime = req.body.startTime+'Z';
+        req.body.endTime = req.body.endTime+'Z';
+    }
     let connection = new model(req.body);
+
+    if(DateTime.fromISO(req.body.startTime) < DateTime.fromISO(req.body.endTime)){
+        let err = new Error('Invalid date and time, Start time should be smaller than end Time');
+        err.status = 400;
+        next(err);
+    }
     connection.save(connection)
     .then(()=>res.redirect('/connections'))
     .catch(err=>{

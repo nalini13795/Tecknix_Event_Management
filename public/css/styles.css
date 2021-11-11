@@ -25,7 +25,7 @@ body{
 }
 .card-img{
   height: 300px;
-  width: 300px;
+  width: 300px !important;
 }
 .newConnection-form{
   padding-top: 200px;
