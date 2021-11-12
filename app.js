@@ -2,8 +2,9 @@ const express = require('express');
 const morgan = require('morgan');
 var methodOverride = require('method-override')
 const mongoose = require('mongoose');
-const connectionRoute = require('./routes/connectionRoute')
-const mainRoute = require('./routes/mainRoute')
+const connectionRoute = require('./routes/connectionRoute');
+const mainRoute = require('./routes/mainRoute');
+const userRoute = require('./routes/userRoute');
 const app = express();  
 let host = 'localhost';
 let port = 3000;
@@ -32,6 +33,7 @@ app.get('/',(req,res)=>{
 
 app.use('/connections',connectionRoute);
 app.use('/index', mainRoute);
+app.use('/user', userRoute);
 
 app.use((req,res,next)=>{
     let err = new Error('Server cannot locate '+req.url);
