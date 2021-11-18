@@ -8,27 +8,51 @@
 <title>Teknix</title>
 </head>
 <body>
-    <div class="container-fluid">
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light navbar-bg ">
-                <a class="navbar-brand" href="/">
-                    <img src="/images/company-img.png" class="brand-img d-inline-block align-top" alt="">
-                </a>
-                <div class="collapse navbar-collapse header-link" id="navbarNavAltMarkup">
-                  <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="/connections/newConnection">Create Event</a>
-                    <a class="nav-item nav-link" href="/user/login">Login</a>
-                    <a class="nav-item nav-link" href="/user/signup">Sign Up</a>
-                    <a class="nav-item nav-link" href="/user/profile">Profile</a>
-                  </div>
-                </div>
-              </nav>
-              <nav  class="navbar navbar-expand-lg navbar-light">
-                <div class="collapse navbar-collapse" >
-                    <div class="navbar-nav">
-                      <a class="nav-item nav-link" href="/connections">Show Events</a>
-                    </div>
-                </div>
-              </nav>
-        </header> 
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <header>
+                    <nav class="navbar navbar-expand-lg navbar-light navbar-bg ">
+                        <a class="navbar-brand" href="/">
+                            <img src="/images/company-img.png" class="brand-img d-inline-block align-top" alt="">
+                        </a>
+                        <div class="collapse navbar-collapse header-link" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link" href="/connections/newConnection">Create Event</a>
+                            <a class="nav-item nav-link" href="/connections">Show Events</a>
+                            <a class="nav-item nav-link" href="/user/login">Login</a>
+                            <a class="nav-item nav-link" href="/user/signup">Sign Up</a>
+                            <a class="nav-item nav-link" href="/user/profile">Profile</a>
+                            <a class="nav-item nav-link" href="/user/logout">Logout</a>
+
+                        </div>
+                        </div>
+                    </nav>
+                    
+                        <div  >
+                            <div class="flash-msg">
+                                <% if(errorMessages.length > 0) {%>
+                                    <% errorMessages.forEach(message=>{%>
+                                        <div class="alert alert-danger" role="alert">
+                                            <%=message%>
+                                        </div>
+                                        <%});%>
+                                            <%}%>
+                                
+                                                <% if(successMessages.length > 0) {%>
+                                
+                                                    <% successMessages.forEach(message=>{%>
+                                                        <div class="alert alert-success" role="alert">
+                                                            <%=message%>
+                                                        </div>
+                                                        <%});%>
+                                                            <%}%>
+                            </div>
+                        </div>
+                    
+                </header>
+            </div>
+        </div> 
     </div>
+
+    

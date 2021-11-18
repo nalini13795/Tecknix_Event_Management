@@ -58,7 +58,8 @@ exports.addConnection = (req, res, next) =>{
     }
     let connection = new model(req.body);
 
-    if(DateTime.fromISO(req.body.startTime) < DateTime.fromISO(req.body.endTime)){
+    if(DateTime.fromISO(req.body.startTime).ts > DateTime.fromISO(req.body.endTime).ts){
+        req.flash('error', 'Invalid date and time, Start time should be smaller than end Time');  
         let err = new Error('Invalid date and time, Start time should be smaller than end Time');
         err.status = 400;
         next(err);

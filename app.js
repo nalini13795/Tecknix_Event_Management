@@ -2,6 +2,9 @@ const express = require('express');
 const morgan = require('morgan');
 var methodOverride = require('method-override')
 const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const flash = require('connect-flash');
 const connectionRoute = require('./routes/connectionRoute');
 const mainRoute = require('./routes/mainRoute');
 const userRoute = require('./routes/userRoute');
@@ -19,6 +22,24 @@ mongoose.connect('mongodb://localhost:27017/tecknix', { useUnifiedTopology: true
 })
 .catch(err=>console.log(err.message));
 
+app.use(
+    session({
+        secret: "ajfeirf90aeu9eroejfoefj",
+        resave: false,
+        saveUninitialized: false,
+        store: new MongoStore({mongoUrl: 'mongodb://localhost:27017/demos'}),
+        cookie: {maxAge: 60*60*1000}
+        })
+);
+app.use(flash());
+
+app.use((req, res, next) => {
+    //console.log(req.session);
+    res.locals.user = req.session.user || null;
+    res.locals.errorMessages = req.flash('error');
+    res.locals.successMessages = req.flash('success');
+    next();
+});
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
