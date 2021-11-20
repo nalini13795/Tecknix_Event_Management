@@ -243,3 +243,12 @@ input:placeholder {
   margin-left: 546px;
   border-radius: 10px 10px 10px 10px;
 }
+
+.welcome-header{
+  margin-left: 900px;
+  margin-top: 8px;
+}
+
+.profile-table{
+  margin-top: 162px;
+}

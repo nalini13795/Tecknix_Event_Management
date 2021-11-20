@@ -1,5 +1,43 @@
 <%- include('../partials/header.ejs')%>
 
+<div class="container profile-table">
+  <h2>Welcome, <%=user.firstName%></h2>
+  <br>
+
+    <%if(connections.length){%>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Sr No.</th>
+            <th scope="col">Title</th>
+            <th scope="col">Topic</th>
+            <th scope="col">Show</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+            <%var serialnumber = 1; connections.forEach(conn=>{%>
+                <tr>
+                    <th scope="row"><%= serialnumber%></th>
+                    <td><%= conn.title%></td>
+                    <td><%= conn.topic%></td>
+                    <td><a type="button" class="btn btn-info" href="/connections/<%= conn._id%>">Info</a></td>
+                    <form>
+                        <td><button class="btn btn-secondary" type = "submit" formmethod ="GET"  formaction ="/connections/<%= conn._id%>/edit">Edit</button></td>
+                        <td><button class="btn btn-danger" type ="submit" formmethod ="POST"  formaction ="/connections/<%= conn._id%>?_method=DELETE">Delete</button></td>
+                    </form>
+                </tr>
+                <% serialnumber++
+            })%>
+        </tbody>
+      </table>
+    <%}else{%>
+      <p>No connections to display</p>
+    <%}%>
+    
+</div>
+
 <%- include('../partials/footer.ejs')%>
 </body>
 </html>

@@ -28,12 +28,14 @@ exports.Connection = (req,res) => {
 
 exports.showByID = (req, res, next) => {
     let id = req.params.id
-    if(!id.match(/^[0-9a-f]{24}$/)){
-        let err = new Error('Invalid connection id');
-        err.status = 400;
-        next(err);
-    }
-    model.findById(id)
+    // if(!id.match(/^[0-9a-f]{24}$/)){
+    //     let err = new Error('Invalid connection id');
+    //     err.status = 400;
+    //     next(err);
+    // }
+    // model.findById(id).populate('host', 'firstName lastName')
+
+    model.findById(id).populate('host', 'firstName lastName')
     .then(connection=>{
         if(connection){
             connection =JSON.parse(JSON.stringify(connection)) 
@@ -52,23 +54,28 @@ exports.showByID = (req, res, next) => {
 
 exports.addConnection = (req, res, next) =>{
     console.log(req.body);
+    let connection = new model(req.body);
+    connection.host =  req.session.user;
     if(req.body.startTime && req.body.endTime){
         req.body.startTime = req.body.startTime+'Z';
         req.body.endTime = req.body.endTime+'Z';
     }
-    let connection = new model(req.body);
 
-    if(DateTime.fromISO(req.body.startTime).ts > DateTime.fromISO(req.body.endTime).ts){
-        req.flash('error', 'Invalid date and time, Start time should be smaller than end Time');  
-        let err = new Error('Invalid date and time, Start time should be smaller than end Time');
-        err.status = 400;
-        next(err);
-    }
+    // if(DateTime.fromISO(req.body.startTime).ts > DateTime.fromISO(req.body.endTime).ts){
+    //     req.flash('error', 'Invalid date and time, Start time should be smaller than end Time');  
+    //     let err = new Error('Invalid date and time, Start time should be smaller than end Time');
+    //     err.status = 400;
+    //     next(err);
+    // }
     connection.save(connection)
-    .then(()=>res.redirect('/connections'))
+    .then(()=>{
+        req.flash('success', 'You connection was sucessefully created');
+        res.redirect('/connections')
+    })
     .catch(err=>{
         if(err.name === 'ValidationError'){
-            err.status =  400;    
+            req.flash('error', 'validation error');
+            req.redirect('back');    
         }
         next(err);
     });
@@ -76,15 +83,16 @@ exports.addConnection = (req, res, next) =>{
 
 exports.delete = (req, res, next) =>{
     let id = req.params.id;
-    if(!id.match(/^[0-9a-f]{24}$/)){
-        let err = new Error('Invalid connection id');
-        err.status = 400;
-        next(err);
-    }
+    // if(!id.match(/^[0-9a-f]{24}$/)){
+    //     let err = new Error('Invalid connection id');
+    //     err.status = 400;
+    //     next(err);
+    // }
     model.findByIdAndRemove(id, {useFindAndModify: false})
     .then(connection=>{
         if(connection){
-            res.redirect('/connections')
+            req.flash('success', 'You connection was sucessefully deleted');
+            res.redirect('/connections');
         }else{
             let err = new Error('Cannot find a connection with id ' + id);
             err.status = 404;
@@ -96,11 +104,11 @@ exports.delete = (req, res, next) =>{
 
 exports.edit = (req, res, next) => {
     let id = req.params.id;
-    if(!id.match(/^[0-9a-f]{24}$/)){
-        let err = new Error('Invalid connection id');
-        err.status = 400;
-        next(err);
-    }
+    // if(!id.match(/^[0-9a-f]{24}$/)){
+    //     let err = new Error('Invalid connection id');
+    //     err.status = 400;
+    //     next(err);
+    // }
     model.findById(id)
     .then(connection=>{
         if(connection){
@@ -122,15 +130,15 @@ exports.update = (req, res, next) =>{
     connection.startTime = connection.startTime+'Z'
     connection.endTime = connection.endTime+'Z'
     let id = req.params.id;
-    if(!id.match(/^[0-9a-f]{24}$/)){
-        let err = new Error('Invalid connection id');
-        err.status = 400;
-        next(err);
-    }
+    // if(!id.match(/^[0-9a-f]{24}$/)){
+    //     let err = new Error('Invalid connection id');
+    //     err.status = 400;
+    //     next(err);
+    // }
     model.findByIdAndUpdate(id,connection, {useFindAndModify: false, runValidators: true})
     .then(connection=>{
         if(connection){
-
+            req.flash('success', 'You connection was sucessefully updated');
             res.redirect('/connections/'+id)
         }else{
             let err = new Error('Cannot find a connection with id ' + id);

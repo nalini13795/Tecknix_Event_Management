@@ -8,6 +8,7 @@ const flash = require('connect-flash');
 const connectionRoute = require('./routes/connectionRoute');
 const mainRoute = require('./routes/mainRoute');
 const userRoute = require('./routes/userRoute');
+const user = require('./models/user');
 const app = express();  
 let host = 'localhost';
 let port = 3000;
@@ -34,8 +35,8 @@ app.use(
 app.use(flash());
 
 app.use((req, res, next) => {
-    //console.log(req.session);
     res.locals.user = req.session.user || null;
+    res.locals.firstName = req.session.firstName ||null;
     res.locals.errorMessages = req.flash('error');
     res.locals.successMessages = req.flash('success');
     next();

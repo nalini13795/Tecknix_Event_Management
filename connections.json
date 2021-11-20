@@ -1,109 +1,151 @@
 [{
   "_id": {
-    "$oid": "6183448d926e611366569a62"
+    "$oid": "6196f76f828dd8d0e654b312"
   },
   "topic": "KNOWLEDGE EVENT",
   "title": "Learn Python",
-  "host": "Jordan",
   "details": "This is a basic level workshop where all the basics of python will be covered no pre-requisite a required for this workshop. At the end of the workshop a small project will be given for practice.",
   "where": "Zoom",
   "startTime": {
-    "$date": "2021-11-25T11:00:00Z"
+    "$date": "2021-11-25T16:00:00Z"
   },
   "endTime": {
-    "$date": "2021-11-25T18:00:00Z"
+    "$date": "2021-11-28T01:00:00Z"
   },
   "imageURL": "http://localhost:3000/images/python.jfif",
+  "host": {
+    "$oid": "618eb0ec19143da1926af6cc"
+  },
+  "createdAt": {
+    "$date": "2021-11-19T01:01:35.176Z"
+  },
   "updatedAt": {
-    "$date": "2021-11-04T03:24:27.195Z"
-  }
+    "$date": "2021-11-19T01:01:35.176Z"
+  },
+  "__v": 0
 },{
   "_id": {
-    "$oid": "6183448d926e611366569a63"
-  },
-  "topic": "KNOWLEDGE EVENT",
-  "title": "Learn ReactJS",
-  "host": "Timber",
-  "details": "This is a basic level workshop where all the basics of python will be covered, no pre-requisite arequired for this workshop. At the end of the workshop a small project will be given for practice.",
-  "where": "Zoom",
-  "startTime": {
-    "$date": "2021-11-25T08:00:00Z"
-  },
-  "endTime": {
-    "$date": "2021-11-25T18:00:00Z"
-  },
-  "imageURL": "http://localhost:3000/images/reactjs.jpg",
-  "updatedAt": {
-    "$date": "2021-11-04T05:41:24.099Z"
-  }
-},{
-  "_id": {
-    "$oid": "6183448d926e611366569a64"
-  },
-  "topic": "KNOWLEDGE EVENT",
-  "title": "Learn NodeJs",
-  "host": "Jordan",
-  "details": "This is a basic level workshop where all the basics of python will be covered, no pre-requisite arequired for this workshop. At the end of the workshop a small project will be given for practice.",
-  "where": "Zoom",
-  "startTime": {
-    "$date": "2021-11-26T08:00:00Z"
-  },
-  "endTime": {
-    "$date": "2021-11-26T20:00:00Z"
-  },
-  "imageURL": "https://piyushvscode.gallerycdn.vsassets.io/extensions/piyushvscode/nodejs-snippets/0.0.2/1575178663150/Microsoft.VisualStudio.Services.Icons.Default",
-  "updatedAt": {
-    "$date": "2021-11-04T05:42:01.400Z"
-  }
-},{
-  "_id": {
-    "$oid": "6183448d926e611366569a65"
-  },
-  "topic": "HR EVENT",
-  "title": "Dandiya Event",
-  "host": "Nalini",
-  "details": "This event is to celebrate the gujrati festival of NAVRATRI. There will snacks and dandiya available the location please come enjoy a fun night with us.",
-  "where": "Common room 2",
-  "startTime": {
-    "$date": "2021-11-25T18:00:00Z"
-  },
-  "endTime": {
-    "$date": "2021-11-25T18:00:00Z"
-  },
-  "imageURL": "https://i.pinimg.com/736x/0f/76/d0/0f76d0bffd7c7623eaa0ee6d9d40c583.jpg"
-},{
-  "_id": {
-    "$oid": "6183448d926e611366569a66"
+    "$oid": "6196f804828dd8d0e654b322"
   },
   "topic": "HR EVENT",
   "title": "Diwali Event",
-  "host": "Ria",
   "details": "This event is to celebrate the gujrati festival of Diyas. There will snacks and dandiya available at the location please come enjoy a fun night with us.",
-  "where": "Common room 2",
+  "where": "common room 5",
   "startTime": {
-    "$date": "2021-11-25T11:00:00Z"
+    "$date": "2021-11-26T01:00:00Z"
   },
   "endTime": {
-    "$date": "2021-11-25T23:00:00Z"
+    "$date": "2021-11-26T04:03:00Z"
   },
   "imageURL": "http://localhost:3000/images/diwali.jfif",
+  "host": {
+    "$oid": "618eb0ec19143da1926af6cc"
+  },
+  "createdAt": {
+    "$date": "2021-11-19T01:04:04.765Z"
+  },
   "updatedAt": {
-    "$date": "2021-11-04T03:25:32.313Z"
-  }
+    "$date": "2021-11-19T01:04:04.765Z"
+  },
+  "__v": 0
 },{
   "_id": {
-    "$oid": "6183448d926e611366569a67"
+    "$oid": "6196f88c828dd8d0e654b32b"
+  },
+  "topic": "KNOWLEDGE EVENT",
+  "title": "Learn NodeJs",
+  "details": "This is a basic level workshop where all the basics of python will be covered, no pre-requisite are required for this workshop. At the end of the workshop a small project will be given for practice.",
+  "where": "Zoom",
+  "startTime": {
+    "$date": "2021-11-22T13:00:00Z"
+  },
+  "endTime": {
+    "$date": "2021-11-26T23:00:00Z"
+  },
+  "imageURL": "https://piyushvscode.gallerycdn.vsassets.io/extensions/piyushvscode/nodejs-snippets/0.0.2/1575178663150/Microsoft.VisualStudio.Services.Icons.Default",
+  "host": {
+    "$oid": "618eb0ec19143da1926af6cc"
+  },
+  "createdAt": {
+    "$date": "2021-11-19T01:06:20.685Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-19T01:06:20.685Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6196fb8bf82da92e637384f5"
+  },
+  "topic": "KNOWLEDGE EVENT",
+  "title": "Learn ReactJS",
+  "details": "This is a basic level workshop where all the basics of python will be covered, no pre-requisite are required for this workshop. At the end of the workshop a small project will be given for practice.",
+  "where": "Zoom",
+  "startTime": {
+    "$date": "2021-11-20T01:10:00Z"
+  },
+  "endTime": {
+    "$date": "2021-11-21T03:00:00Z"
+  },
+  "imageURL": "http://localhost:3000/images/reactjs.jpg",
+  "host": {
+    "$oid": "6196f91cc901cb94f388262b"
+  },
+  "createdAt": {
+    "$date": "2021-11-19T01:19:07.060Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-19T01:19:07.060Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6196fbf8f82da92e63738501"
+  },
+  "topic": "HR EVENT",
+  "title": "Dandiya Event",
+  "details": "This event is to celebrate the gujrati festival of NAVRATRI. There will snacks and dandiya available the location please come enjoy a fun night with us.",
+  "where": "common room 5",
+  "startTime": {
+    "$date": "2021-11-24T02:00:00Z"
+  },
+  "endTime": {
+    "$date": "2021-11-23T17:00:00Z"
+  },
+  "imageURL": "https://i.pinimg.com/736x/0f/76/d0/0f76d0bffd7c7623eaa0ee6d9d40c583.jpg",
+  "host": {
+    "$oid": "6196f91cc901cb94f388262b"
+  },
+  "createdAt": {
+    "$date": "2021-11-19T01:20:56.834Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-19T01:20:56.834Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6196fcb5f82da92e63738517"
   },
   "topic": "HR EVENT",
   "title": "Holi Event",
-  "host": "Gaurav",
   "details": "This event is to celebrate the gujrati festival of Holi. There will snacks and dandiya available at tlocation please come enjoy a fun night with us.",
-  "where": "Common room 2",
+  "where": "Common room 10",
   "startTime": {
-    "$date": "2021-11-25T18:00:00Z"
+    "$date": "2021-11-19T04:23:00Z"
   },
   "endTime": {
-    "$date": "2021-11-25T18:00:00Z"
+    "$date": "2021-11-20T13:31:00Z"
   },
-  "imageURL": "http://localhost:3000/images/holi.jfif"
+  "imageURL": "http://localhost:3000/images/holi.jfif",
+  "host": {
+    "$oid": "6196f91cc901cb94f388262b"
+  },
+  "createdAt": {
+    "$date": "2021-11-19T01:24:05.274Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-20T03:23:16.312Z"
+  },
+  "__v": 0
 }]

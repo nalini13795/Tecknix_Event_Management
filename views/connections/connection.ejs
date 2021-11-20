@@ -7,7 +7,7 @@
                 <div class="card-body row">
                     <div class="col-3"><img class="card-img" src="<%= connection.imageURL%>" alt=""></div>
                     <div class="col-7 evntDetl">
-                        <h3>Hosted By <%= connection.host%></h3>
+                        <h3>Hosted By <%= connection.host.firstName + ' ' + connection.host.lastName%></h3>
                         <div class="event-info">
                             <div class=" row">
                                 <h6>Hosted On : </h6>
@@ -34,8 +34,10 @@
                     <div class="col-2">
                         <form>
                             <div class="event-details-btn">
-                                <button class="btn btn-secondary" type = "submit" formmethod ="GET"  formaction ="/connections/<%= connection._id%>/edit">Edit</button>
-                                <button class="btn btn-danger" type ="submit" formmethod ="POST"  formaction ="/connections/<%= connection._id%>?_method=DELETE">Delete</button>
+                                <%if(user == connection.host._id) {%>
+                                    <button class="btn btn-secondary" type = "submit" formmethod ="GET"  formaction ="/connections/<%= connection._id%>/edit">Edit</button>
+                                    <button class="btn btn-danger" type ="submit" formmethod ="POST"  formaction ="/connections/<%= connection._id%>?_method=DELETE">Delete</button>
+                                <%}%>
                             </div>                        
                         </form>
                     </div>

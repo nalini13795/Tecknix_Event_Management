@@ -1,5 +1,7 @@
 const express = require('express');
 const model = require('../models/user')
+const connection = require('../models/connection');
+const { connections } = require('mongoose');
 
 
 exports.loginPage = (req,res) => {
@@ -14,13 +16,15 @@ exports.create = (req, res, next)=>{
     //res.send('Created a new story');
         let user = new model(req.body);//create a new story document
         user.save()//insert the document to the database
-        .then(user=> res.redirect('/user/login'))
+        .then(user=>{
+            req.flash('success', 'You registered sucessefully');
+            res.redirect('/user/login')
+        })
         .catch(err=>{
             if(err.name === 'ValidationError' ) {
                 req.flash('error', err.message);  
                 return res.redirect('/user/new');
             }
-
             if(err.code === 11000) {
                 req.flash('error', 'Email has been used');  
                 return res.redirect('/user/new');
@@ -28,7 +32,6 @@ exports.create = (req, res, next)=>{
             
             next(err);
         }); 
-    
 };
 
 exports.login = (req, res, next)=>{
@@ -45,6 +48,7 @@ exports.login = (req, res, next)=>{
             .then(result=>{
                 if(result) {
                     req.session.user = user._id;
+                    req.session.firstName = user.firstName;
                     req.flash('success', 'You have successfully logged in');
                     res.redirect('/user/profile');
             } else {
@@ -59,15 +63,15 @@ exports.login = (req, res, next)=>{
 
 exports.profile = (req, res, next)=>{
     let id = req.session.user;
-    res.render('./user/profile');
+    // res.render('./user/profile');
     // model.findById(id) 
-    // Promise.all([ model.findById(id), Story.find({author: id})])
-    // .then(result=>{
-    //     console.log(result);
-    //     const [user, stories] = result;
-    //     res.render('./user/profile', {user, stories})
-    // })
-    // .catch(err=>next(err));
+    Promise.all([ model.findById(id), connection.find({host: id})])
+    .then(result=>{
+        // console.log(result);
+        const [user, connections] = result;
+        res.render('./user/profile', {user, connections})
+    })
+    .catch(err=>next(err));
 };
 
 

@@ -18,13 +18,18 @@
                         </a>
                         <div class="collapse navbar-collapse header-link" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <a class="nav-item nav-link" href="/connections/newConnection">Create Event</a>
                             <a class="nav-item nav-link" href="/connections">Show Events</a>
-                            <a class="nav-item nav-link" href="/user/login">Login</a>
-                            <a class="nav-item nav-link" href="/user/signup">Sign Up</a>
-                            <a class="nav-item nav-link" href="/user/profile">Profile</a>
-                            <a class="nav-item nav-link" href="/user/logout">Logout</a>
-
+                            <%if(!user) {%>
+                                <a class="nav-item nav-link" href='/user/signup'>Sign Up</a>
+                                <a class="nav-item nav-link" href='/user/login'>Login</a>
+                            <%} else {%>
+                                <a class="nav-item nav-link" href="/connections/newConnection">Create Event</a>
+                                <a class="nav-item nav-link" href='/user/profile'>Profile</a>
+                                <a class="nav-item nav-link" href='/user/logout'>Logout</a>
+                            <%}%>
+                            <%if(user) {%>
+                                <p class="nav-item welcome-header">Welcome <%= firstName%></p>
+                            <%}%>
                         </div>
                         </div>
                     </nav>
