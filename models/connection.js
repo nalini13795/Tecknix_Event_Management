@@ -15,7 +15,10 @@ const connectionSchema = new Schema({
     // when : {type: Date, required:[true, 'Date is required']},
     startTime : {type: Date, required:[true, 'startTime is required']},
     endTime : {type: Date, required:[true, 'endTime is required']},
-    imageURL : {type: String}
+    imageURL : {type: String},
+    rsvpyes :  [{type: Schema.Types.ObjectId, ref: 'User'}],
+    rsvpno :  [{type: Schema.Types.ObjectId, ref: 'User'}],
+    rsvpmaybe :  [{type: Schema.Types.ObjectId, ref: 'User'}]
 }, {timestamps: true}
 )
 
