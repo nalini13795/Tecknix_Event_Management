@@ -1,5 +1,7 @@
 const express = require('express');
 const model = require('../models/connection');
+const user = require('../models/user');
+const rsvp = require('../models/rsvp');
 const {DateTime} = require('luxon');
 const router = express.Router();
 
@@ -28,21 +30,15 @@ exports.Connection = (req,res) => {
 
 exports.showByID = (req, res, next) => {
     let id = req.params.id
-    // if(!id.match(/^[0-9a-f]{24}$/)){
-    //     let err = new Error('Invalid connection id');
-    //     err.status = 400;
-    //     next(err);
-    // }
-    // model.findById(id).populate('host', 'firstName lastName')
-
-    model.findById(id).populate('host', 'firstName lastName')
-    .then(connection=>{
+    Promise.all([model.findById(id).populate('host', 'firstName lastName'), rsvp.count({connection: id, rsvp: "yes"})])
+    .then(result=>{
+        let [connection, count] = result;
         if(connection){
             connection =JSON.parse(JSON.stringify(connection)) 
             connection.when = JSON.stringify(connection.startTime).slice(1,11)
             connection.startTime = JSON.stringify(connection.startTime).slice(12,17);
             connection.endTime = JSON.stringify(connection.endTime).slice(12,17);
-            res.render('./connections/connection',{connection})
+            res.render('./connections/connection',{connection, count})
         }else{
             let err = new Error('Cannot Find connection with id '+id);
             err.status = 404;
@@ -53,7 +49,7 @@ exports.showByID = (req, res, next) => {
 }
 
 exports.addConnection = (req, res, next) =>{
-    console.log(req.body);
+    // console.log(req.body);
     let connection = new model(req.body);
     connection.host =  req.session.user;
     if(req.body.startTime && req.body.endTime){
@@ -83,12 +79,7 @@ exports.addConnection = (req, res, next) =>{
 
 exports.delete = (req, res, next) =>{
     let id = req.params.id;
-    // if(!id.match(/^[0-9a-f]{24}$/)){
-    //     let err = new Error('Invalid connection id');
-    //     err.status = 400;
-    //     next(err);
-    // }
-    model.findByIdAndRemove(id, {useFindAndModify: false})
+    Promise.all([model.findByIdAndRemove(id, {useFindAndModify: false}), rsvp.deleteMany({connection: id})])
     .then(connection=>{
         if(connection){
             req.flash('success', 'You connection was sucessefully deleted');
@@ -104,11 +95,6 @@ exports.delete = (req, res, next) =>{
 
 exports.edit = (req, res, next) => {
     let id = req.params.id;
-    // if(!id.match(/^[0-9a-f]{24}$/)){
-    //     let err = new Error('Invalid connection id');
-    //     err.status = 400;
-    //     next(err);
-    // }
     model.findById(id)
     .then(connection=>{
         if(connection){
@@ -130,11 +116,6 @@ exports.update = (req, res, next) =>{
     connection.startTime = connection.startTime+'Z'
     connection.endTime = connection.endTime+'Z'
     let id = req.params.id;
-    // if(!id.match(/^[0-9a-f]{24}$/)){
-    //     let err = new Error('Invalid connection id');
-    //     err.status = 400;
-    //     next(err);
-    // }
     model.findByIdAndUpdate(id,connection, {useFindAndModify: false, runValidators: true})
     .then(connection=>{
         if(connection){
@@ -153,3 +134,5 @@ exports.update = (req, res, next) =>{
         next(err)
     })
 }
+
+

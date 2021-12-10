@@ -2,7 +2,7 @@
 
     <div class="container">
         <div class="events-card card-id">
-            <div class="card bg-light mb-3">
+            <div class="card card-width bg-light mb-3">
                 <div class="card-header Event-detail-heading"><h2><%= connection.title%></h2></div>
                 <div class="card-body row">
                     <div class="col-3"><img class="card-img" src="<%= connection.imageURL%>" alt=""></div>
@@ -37,6 +37,14 @@
                                 <%if(user == connection.host._id) {%>
                                     <button class="btn btn-secondary" type = "submit" formmethod ="GET"  formaction ="/connections/<%= connection._id%>/edit">Edit</button>
                                     <button class="btn btn-danger" type ="submit" formmethod ="POST"  formaction ="/connections/<%= connection._id%>?_method=DELETE">Delete</button>
+                                <%}else if(user){%>
+                                    <p>People attending: <%= count%></p>
+                                    <h6>RSVP ?</h6>
+                                    <div class="rsvp">
+                                        <button class="btn btn-secondary" type = "submit" formmethod ="POST"  formaction ="/rsvp/<%= connection._id%>/yes">Yes</button>
+                                        <button class="btn btn-danger" type ="submit" formmethod ="POST"  formaction ="/rsvp/<%= connection._id%>/no">No</button>
+                                        <button class="btn btn-info" type ="submit" formmethod ="POST"  formaction ="/rsvp/<%= connection._id%>/maybe">Maybe</button>
+                                    </div>
                                 <%}%>
                             </div>                        
                         </form>

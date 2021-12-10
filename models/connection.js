@@ -16,13 +16,14 @@ const connectionSchema = new Schema({
     startTime : {type: Date, required:[true, 'startTime is required']},
     endTime : {type: Date, required:[true, 'endTime is required']},
     imageURL : {type: String},
-    rsvpyes :  [{type: Schema.Types.ObjectId, ref: 'User'}],
-    rsvpno :  [{type: Schema.Types.ObjectId, ref: 'User'}],
-    rsvpmaybe :  [{type: Schema.Types.ObjectId, ref: 'User'}]
+    rsvp :  [{
+        id : {type: Schema.Types.ObjectId, ref: 'User'}, 
+        value : {type: String}
+    }],
 }, {timestamps: true}
 )
 
-module.exports = mongoose.model('connection', connectionSchema);
+module.exports = mongoose.model('Connection', connectionSchema);
 
 // exports.find = function(){
 //     return connections;

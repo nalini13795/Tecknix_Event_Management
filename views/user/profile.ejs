@@ -3,7 +3,7 @@
 <div class="container profile-table">
   <h2>Welcome, <%=user.firstName%></h2>
   <br>
-
+    <h2>Your connections are </h2>
     <%if(connections.length){%>
       <table class="table table-hover">
         <thead>
@@ -35,7 +35,38 @@
     <%}else{%>
       <p>No connections to display</p>
     <%}%>
-    
+
+    <h2>Your RSVP's are</h2>
+    <%if(rsvp.length){%>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Sr No.</th>
+            <th scope="col">Title</th>
+            <th scope="col">RSVP</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+            <%var serialnumber = 1; rsvp.forEach(obj=>{%>
+                <tr>
+                    <th scope="row"><%= serialnumber%></th>
+                    <td><%= obj.connection.title%></td>
+                    <td><%= obj.rsvp%></td>
+                    <!-- <td><a type="button" class="btn btn-info" href="/connections/<%= obj._id%>">Info</a></td> -->
+                    <form>
+                        <td><button class="btn btn-secondary" type = "submit" formmethod ="GET"  formaction ="/connections/<%= obj.connection._id%>">Edit</button></td>
+                        <td><button class="btn btn-danger" type ="submit" formmethod ="POST"  formaction ="/rsvp/<%= obj._id%>?_method=DELETE">Delete</button></td>
+                    </form>
+                </tr>
+                <% serialnumber++
+            })%>
+        </tbody>
+      </table>
+    <%}else{%>
+      <p>No events rsvped </p>
+    <%}%>
 </div>
 
 <%- include('../partials/footer.ejs')%>

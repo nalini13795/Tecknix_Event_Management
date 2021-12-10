@@ -2,6 +2,7 @@ const express = require('express');
 const model = require('../models/user')
 const connection = require('../models/connection');
 const { connections } = require('mongoose');
+const rsvp = require('../models/rsvp');
 
 
 exports.loginPage = (req,res) => {
@@ -65,11 +66,12 @@ exports.profile = (req, res, next)=>{
     let id = req.session.user;
     // res.render('./user/profile');
     // model.findById(id) 
-    Promise.all([ model.findById(id), connection.find({host: id})])
+    Promise.all([ model.findById(id), connection.find({host: id}), rsvp.find({user: id}).populate('connection', 'title')])
     .then(result=>{
         // console.log(result);
-        const [user, connections] = result;
-        res.render('./user/profile', {user, connections})
+        const [user, connections, rsvp] = result;
+        // console.log(rsvp);
+        res.render('./user/profile', {user, connections, rsvp})
     })
     .catch(err=>next(err));
 };

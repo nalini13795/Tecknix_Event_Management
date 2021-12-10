@@ -89,6 +89,7 @@ article{
 }
 .Event-detail-heading{
   font-weight: 500;
+  width: 100% !important;
 }
 .event-details-btn a{
   color: #fff;
@@ -250,5 +251,11 @@ input:placeholder {
 }
 
 .profile-table{
-  margin-top: 162px;
+  margin-top: 5%;
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.card-width{
+  width: 104% !important;
 }

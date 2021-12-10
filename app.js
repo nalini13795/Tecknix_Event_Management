@@ -8,6 +8,9 @@ const flash = require('connect-flash');
 const connectionRoute = require('./routes/connectionRoute');
 const mainRoute = require('./routes/mainRoute');
 const userRoute = require('./routes/userRoute');
+const rsvpRoute = require('./routes/rsvpRoute');
+
+
 const user = require('./models/user');
 const app = express();  
 let host = 'localhost';
@@ -56,6 +59,7 @@ app.get('/',(req,res)=>{
 app.use('/connections',connectionRoute);
 app.use('/index', mainRoute);
 app.use('/user', userRoute);
+app.use('/rsvp', rsvpRoute);
 
 app.use((req,res,next)=>{
     let err = new Error('Server cannot locate '+req.url);

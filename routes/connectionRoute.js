@@ -23,5 +23,4 @@ router.get('/:id/edit', isLoggedIn, validateId, isAuthor, controller.edit);
 router.put('/:id', isLoggedIn, validateId, isAuthor, controller.update);
 
 
-
 module.exports = router;
