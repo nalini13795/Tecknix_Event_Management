@@ -12,7 +12,7 @@
   padding-left: 1000px;
 }
 .card-top{
-  padding-top: 150px;
+  padding-top: 10px;
 }
 
 body{
@@ -29,10 +29,14 @@ body{
   width: 300px !important;
 }
 .newConnection-form{
-  padding-top: 200px;
+  padding-top: 30px;
+  width: 900px;
+  margin-left: 273px;
 }
 .card-id{
-  padding-top: 168px;
+  width: 1000px;
+  margin-left: 200px;
+  margin-top: 53px;
 }
 .btn-submit{
   padding-left: 50%;
@@ -41,6 +45,9 @@ body{
   width: 79px;
   height: 49px;
   border: black solid;
+}
+.flash-msg{
+  padding-top: 10px;
 }
 #header-links a{
   float: left;
@@ -51,7 +58,7 @@ body{
   font-size: 17px;
 }
 .events-card div{
-  width: 70rem;
+  width: 1030px;
 }
 /* .events-card{
   padding-left: 216px;
@@ -112,7 +119,7 @@ article{
   justify-content: center;
   width: 100%;
   min-height: 100%;
-  padding: 200px;
+  padding: 80px;
 }
 
 #formContent {
@@ -251,11 +258,16 @@ input:placeholder {
 }
 
 .profile-table{
-  margin-top: 5%;
+  margin-top: 10px;
   height: 600px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .card-width{
   width: 104% !important;
+}
+.main-block{
+  margin-top: 75px;
+  overflow-y: scroll;
+  height: 617px
 }

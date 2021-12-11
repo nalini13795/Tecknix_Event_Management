@@ -56,13 +56,18 @@ exports.addConnection = (req, res, next) =>{
         req.body.startTime = req.body.startTime+'Z';
         req.body.endTime = req.body.endTime+'Z';
     }
-
-    // if(DateTime.fromISO(req.body.startTime).ts > DateTime.fromISO(req.body.endTime).ts){
-    //     req.flash('error', 'Invalid date and time, Start time should be smaller than end Time');  
-    //     let err = new Error('Invalid date and time, Start time should be smaller than end Time');
-    //     err.status = 400;
-    //     next(err);
-    // }
+    console.log(DateTime.now())
+    if(DateTime.fromISO(req.body.startTime).ts > DateTime.fromISO(req.body.endTime).ts){
+        req.flash('error', 'Invalid date and time, Start time should be smaller than end Time');  
+        // let err = new Error('Invalid date and time, Start time should be smaller than end Time');
+        // err.status = 400;
+        // next(err);
+        // req.flash('success', 'You connection was sucessefully created');
+        res.redirect('back');
+    }else if(DateTime.now().ts > DateTime.fromISO(req.body.startTime).ts || DateTime.now().ts > DateTime.fromISO(req.body.startTime).ts ){
+        req.flash('error', 'Invalid date and time, time must be after todays date'); 
+        res.redirect('/connections/newConnection');
+    }
     connection.save(connection)
     .then(()=>{
         req.flash('success', 'You connection was sucessefully created');

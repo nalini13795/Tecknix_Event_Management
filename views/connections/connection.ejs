@@ -1,12 +1,12 @@
 <%- include('../partials/header.ejs')%>
 
-    <div class="container">
+    <!-- <div class="container"> -->
         <div class="events-card card-id">
             <div class="card card-width bg-light mb-3">
                 <div class="card-header Event-detail-heading"><h2><%= connection.title%></h2></div>
                 <div class="card-body row">
                     <div class="col-3"><img class="card-img" src="<%= connection.imageURL%>" alt=""></div>
-                    <div class="col-7 evntDetl">
+                    <div class="col-6 evntDetl">
                         <h3>Hosted By <%= connection.host.firstName + ' ' + connection.host.lastName%></h3>
                         <div class="event-info">
                             <div class=" row">
