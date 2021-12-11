@@ -2,3 +2,6 @@
 
 pull the project
 run - npm install
+
+Then run
+node app.js
